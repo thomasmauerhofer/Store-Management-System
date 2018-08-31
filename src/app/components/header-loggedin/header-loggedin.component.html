@@ -1,0 +1,26 @@
+<nav>
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <div class="navicon"></div>
+      <div class="navicon"></div>
+      <div class="navicon"></div>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a routerLink="/stores">Home</a></li>
+      <li *ngIf="user.role === admin"><a routerLink="/new">New Store</a></li>
+      <li><a routerLink="/aggregation">Display Aggregation</a></li>
+      <li><a (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+  <div>
+    <a routerLink="/stores"><img src="assets/detego_store-horizontal.svg" alt="image" style="height: 58px;"></a>
+  </div>
+  <!--<div>
+    <a id="search" data-toggle="collapse" href="#search-bar-form" aria-expanded="false" aria-controls="search-bar-form">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="search-bar-form" class="collapse">
+    <input #searchterm id="search-terms" placeholder="search" (keyup.enter)="searchStore(searchterm.value)">
+  </div>-->
+</nav>

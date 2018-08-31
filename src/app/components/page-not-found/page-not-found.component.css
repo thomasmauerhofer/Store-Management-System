@@ -1,0 +1,9 @@
+div.content {
+  text-align: center;
+}
+
+div.error {
+  font-size: 200%;
+  color: #003657;
+  margin-top: 30px;
+}

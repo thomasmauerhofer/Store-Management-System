@@ -1,0 +1,95 @@
+<app-header-loggedin></app-header-loggedin>
+<div class="content"  *ngIf="store; else loadAnimation">
+  <div class="data">
+    <h1 class="center big">{{store.name}}</h1>
+    <div id="store-data">
+      <h2>Store Details</h2>
+      <dl class="row">
+        <dt class="col-sm-3">County Code</dt>
+        <dd class="col-sm-9">{{store.countryCode}}</dd>
+        <dt class="col-sm-3">E-Mail</dt>
+        <dd class="col-sm-9"><a href="mailto:{{store.email}}">{{store.email}}</a></dd>
+        <dt class="col-sm-3">Category</dt>
+        <dd class="col-sm-9">{{store.category}}</dd>
+      </dl>
+    </div>
+
+    <div id="manager-data">
+      <h2>Manager Details</h2>
+      <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{store.mgrFirstName}} {{store.mgrLastName}}</dd>
+        <dt class="col-sm-3">E-Mail</dt>
+        <dd class="col-sm-9"><a href="mailto:{{store.mgrEmail}}">{{store.mgrEmail}}</a></dd>
+      </dl>
+    </div>
+  </div>
+  <div class="histogram-wrapper"  *ngIf="stockData[1].data.length > 0; else loadAnimationValues">
+    <h1 class="center">Store Characteristics</h1>
+    <div class="histograms">
+      <div class="histogram" *ngIf="stockData[1].data.length > 0">
+        <canvas baseChart
+                [datasets]="stockData"
+                [labels]="stockLabels"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                [options]="barChartOptions"
+        ></canvas>
+      </div>
+
+      <div class="histogram" *ngIf="stockAccData[1].data.length > 0">
+        <canvas baseChart
+                [datasets]="stockAccData"
+                [labels]="stockAccLabels"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                [options]="barChartOptions"
+        ></canvas>
+      </div>
+
+      <div class="histogram" *ngIf="onFloorData[1].data.length > 0">
+        <canvas baseChart
+                [datasets]="onFloorData"
+                [labels]="onFloorLabels"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                [options]="barChartOptions"
+        ></canvas>
+      </div>
+
+      <div class="histogram" *ngIf="meanAgeData[1].data.length > 0">
+        <canvas baseChart
+                [datasets]="meanAgeData"
+                [labels]="meanAgeLabels"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                [options]="barChartOptions"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadAnimation>
+  <div class="loader-wrapper" *ngIf="!loadingError; else error">
+    <div class="loader"></div>
+  </div>
+</ng-template>
+
+<ng-template #error>
+  <div class="error">
+    <em>Sorry, the store you want to view is not available</em>
+  </div>
+</ng-template>
+
+<ng-template #loadAnimationValues>
+  <div class="loader-wrapper" *ngIf="!loadingValuesError; else error">
+    <div class="loader"></div>
+  </div>
+</ng-template>
+
+<ng-template #errorValues>
+  <div class="error">
+    <em>Sorry, the store characteristics are not available</em>
+  </div>
+</ng-template>

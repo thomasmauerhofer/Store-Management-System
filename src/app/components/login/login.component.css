@@ -1,0 +1,12 @@
+div.content {
+  width: 12%;
+  margin: 0 auto;
+}
+
+form#login-form {
+  padding-top: 15px;
+}
+
+div.actions {
+  text-align: center;
+}

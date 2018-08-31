@@ -1,0 +1,153 @@
+<app-header-loggedin></app-header-loggedin>
+<h1 class="center">Add a new Store</h1>
+<div class="content">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+    <div id="store-data">
+      <h2>Store Data</h2>
+      <div class="values">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && name.invalid }">
+          <label>Name*
+            <input class="form-control" name="name" [(ngModel)]="model.name" placeholder="name" #name="ngModel" required>
+          </label>
+          <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+            <div [hidden]="!name.errors.required">Name is required</div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && cc.invalid }">
+          <label>Country Code*
+            <input class="form-control" name="cc" [(ngModel)]="model.countryCode" placeholder="country code"
+                   #cc="ngModel" required pattern="^[A-Z]*$">
+          </label>
+          <div *ngIf="f.submitted && cc.invalid" class="invalid-feedback">
+            <div [hidden]="!cc.errors.required">Country Code is required</div>
+            <div [hidden]="!cc.errors.pattern">Only uppercase letters are allowed</div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && email.invalid }">
+          <label>Email*
+            <input class="form-control" name="email" [(ngModel)]="model.email" placeholder="email" #email="ngModel"
+                   required email>
+          </label>
+          <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+            <div [hidden]="!email.errors.required">E-Mail is required</div>
+            <div [hidden]="!email.errors.email">No valid E-Mail</div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && category.invalid }">
+          <label>Category*
+            <input class="form-control" name="category" [(ngModel)]="model.category" placeholder="category"
+                   #category="ngModel" required pattern="^[0-9]*$">
+          </label>
+          <div *ngIf="f.submitted && category.invalid" class="invalid-feedback">
+            <div [hidden]="!category.errors.required">Category is required</div>
+            <div [hidden]="!category.errors.pattern">Only integers are allowed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="manager-data">
+      <h2>Manager Data</h2>
+      <div class="values">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && mgrfirstname.invalid }">
+          <label>First Name*
+            <input class="form-control" name="mgr-firstname" [(ngModel)]="model.mgrFirstName"
+                   placeholder="managers firstname" #mgrfirstname="ngModel" required pattern="^[A-Za-z]*$">
+          </label>
+          <div *ngIf="f.submitted && mgrfirstname.invalid" class="invalid-feedback">
+            <div [hidden]="!mgrfirstname.errors.required">Managers firstname is required</div>
+            <div [hidden]="!mgrfirstname.errors.pattern">Only letters are allowed</div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && mgrlastname.invalid }">
+          <label>Last Name*
+            <input class="form-control" name="mgr-lastname" [(ngModel)]="model.mgrLastName"
+                   placeholder="managers lastname" #mgrlastname="ngModel" required pattern="^[A-Za-z]*$">
+          </label>
+          <div *ngIf="f.submitted && mgrlastname.invalid" class="invalid-feedback">
+            <div [hidden]="!mgrlastname.errors.required">Managers lastname is required</div>
+            <div [hidden]="!mgrfirstname.errors.pattern">Only letters are allowed</div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && mgremail.invalid }">
+          <label>E-Mail*
+            <input class="form-control" name="mgr-email" [(ngModel)]="model.mgrEmail" placeholder="managers email"
+                   #mgremail="ngModel" required email>
+          </label>
+          <div *ngIf="f.submitted && mgremail.invalid" class="invalid-feedback">
+            <div [hidden]="!mgremail.errors.required">Managers E-Mail is required</div>
+            <div [hidden]="!mgremail.errors.email">No valid E-Mail</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="clear: both"></div>
+    <div id="store-characteristics">
+      <h2>Store Characteristics</h2>
+      <div id="stocks" class="values">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && stocksw.invalid }">
+          <label>Stock Shopping Window
+            <input type="number" class="form-control" name="stocks-sw" [(ngModel)]="model.stockShoppingWindow"
+                   placeholder="stock shopping window" #stocksw="ngModel" pattern="^[0-9]*$">
+          </label>
+          <div *ngIf="f.submitted && stocksw.invalid" class="invalid-feedback">
+            <div [hidden]="!stocksw.errors.pattern">Only integers are allowed</div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && stockfs.invalid }">
+          <label>Stock Front Store
+            <input type="number" class="form-control" name="stocks-fs" [(ngModel)]="model.stockFrontstore"
+                   placeholder="stock front store" #stockfs="ngModel" pattern="^[0-9]*$">
+          </label>
+          <div *ngIf="f.submitted && stockfs.invalid" class="invalid-feedback">
+            <div [hidden]="!stockfs.errors.pattern">Only integers are allowed</div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && stockbs.invalid }">
+          <label>Stock Back Store
+            <input type="number" class="form-control" name="stocks-bs" [(ngModel)]="model.stockBackstore"
+                   placeholder="stock back store" #stockbs="ngModel" pattern="^[0-9]*$">
+          </label>
+          <div *ngIf="f.submitted && stockbs.invalid" class="invalid-feedback">
+            <div [hidden]="!stockbs.errors.pattern">Only integers are allowed</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div id="other-characteristics" class="values">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && stockacc.invalid }">
+            <label>Stock Accuracy
+              <input type="number" class="form-control" name="stock-acc" [(ngModel)]="model.stockAccuracy"
+                     placeholder="stock accuracy" #stockacc="ngModel" pattern="^(0(\.\d+)?|1(\.0+)?)*$">
+            </label>
+            <div *ngIf="f.submitted && stockacc.invalid" class="invalid-feedback">
+              <div [hidden]="!stockacc.errors.pattern">Only numeric values between 0.0 and 1.0 are allowed</div>
+            </div>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && onflooravail.invalid }">
+            <label>On Floor Availability
+              <input type="number" class="form-control" name="on-floor-avail" [(ngModel)]="model.onFloorAvailability"
+                     placeholder="on floor availability" #onflooravail="ngModel" pattern="^(0(\.\d+)?|1(\.0+)?)*$">
+            </label>
+            <div *ngIf="f.submitted && onflooravail.invalid" class="invalid-feedback">
+              <div [hidden]="!onflooravail.errors.pattern">Only numeric values between 0.0 and 1.0 are allowed</div>
+            </div>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && stocksma.invalid }">
+            <label>Stock Mean Age
+              <input type="number" class="form-control" name="stocks-ma" [(ngModel)]="model.stockMeanAge"
+                     placeholder="stock mean age" #stocksma="ngModel" pattern="^[0-9]*$">
+            </label>
+            <div *ngIf="f.submitted && stocksma.invalid" class="invalid-feedback">
+              <div [hidden]="!stocksma.errors.pattern">Only integers are allowed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="clear: both"></div>
+    <p>* Required fields</p>
+    <div class="actions">
+      <button class="btn btn-default">Confirm</button>
+    </div>
+  </form>
+</div>

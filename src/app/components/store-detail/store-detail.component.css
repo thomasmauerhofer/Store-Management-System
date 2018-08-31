@@ -1,0 +1,26 @@
+div.data {
+  width: 450px;
+  margin: 0 auto;
+}
+
+div.histogram {
+  width: 450px;
+  float: left;
+  border: 2px solid #003657;
+  margin: 10px 5px;
+}
+
+div.histogram-wrapper {
+  text-align: center;
+  padding-top: 20px;
+}
+
+div.histograms {
+  padding-top: 10px;
+  margin: 0 auto;
+  width: 96.5%;
+}
+
+.big{
+  font-size: 250%;
+}

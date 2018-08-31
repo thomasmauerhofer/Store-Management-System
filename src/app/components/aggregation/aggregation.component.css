@@ -1,0 +1,22 @@
+div.content{
+  margin: 0 auto;
+  width: 86.5%;
+}
+
+div.data {
+  float: left;
+  padding-top: 25px;
+  padding-left: 10px;
+  width: 300px;
+}
+
+div.histogram {
+  width: 500px;
+  float:right;
+}
+
+div.store-characteristic {
+  height: 310px;
+  float: left;
+  padding: 15px 10px;
+}

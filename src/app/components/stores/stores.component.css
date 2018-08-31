@@ -1,0 +1,73 @@
+table.table div.actions {
+  width: 108px;
+}
+
+div.content {
+  margin: 0 auto;
+  width: 60%;
+}
+
+div.table-wrapper {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  height: 547px;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+table.table td {
+  padding-left: 12px;
+}
+
+table.table div.actions button {
+  margin: 1px;
+}
+
+table.table thead tr th:nth-child(1) {
+  width: 173px;
+}
+
+input#name-input {
+  width: 173px;
+}
+
+table.table thead tr th:nth-child(2) {
+  width: 61px;
+}
+
+input#cc-input {
+  width: 61px;
+}
+
+table.table thead tr th:nth-child(3) {
+  width: 222px;
+}
+
+input#email-input {
+  width: 222px;
+}
+
+table.table thead tr th:nth-child(4) {
+  width: 68px;
+}
+
+input#cat-input{
+  width: 68px;
+}
+
+table.table thead tr th:nth-child(5), table.table thead tr th:nth-child(6), table.table thead tr th:nth-child(7),
+table.table thead tr th:nth-child(8){
+  width: 81px;
+  padding-bottom: 42px;
+}
+
+table.table thead tr th:nth-child(9) {
+  width: 128px;
+  padding-bottom: 42px;
+}
+
+.admin-buttons {
+  float: right;
+}

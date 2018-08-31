@@ -1,0 +1,115 @@
+<app-header-loggedin></app-header-loggedin>
+<h1 class="center">Aggregation</h1>
+<div class="content" *ngIf="meanAgesData[0].data.length > 0; else loadAnimation">
+  <div class="store-characteristic">
+    <h2>Total Stocks</h2>
+    <div class="data">
+      <dl class="row">
+        <dt class="col-sm-5">Minimum:</dt>
+        <dd class="col-sm-5">{{stocksValues.min}}</dd>
+        <dt class="col-sm-5">Maximum:</dt>
+        <dd class="col-sm-5">{{stocksValues.max}}</dd>
+        <dt class="col-sm-5">Mean:</dt>
+        <dd class="col-sm-5">{{stocksValues.mean}}</dd>
+        <dt class="col-sm-5">Std. Deviation:</dt>
+        <dd class="col-sm-5">{{stocksValues.std}}</dd>
+      </dl>
+    </div>
+    <div class="histogram" *ngIf="stocksData[0].data.length > 0">
+      <canvas baseChart
+              [datasets]="stocksData"
+              [labels]="stocksLabels"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              [options]="barChartOptions"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="store-characteristic">
+    <h2>Stock Accuracy (in percent)</h2>
+    <div class="data">
+      <dl class="row">
+        <dt class="col-sm-5">Minimum:</dt>
+        <dd class="col-sm-5">{{stocksAccValues.min}}</dd>
+        <dt class="col-sm-5">Maximum:</dt>
+        <dd class="col-sm-5">{{stocksAccValues.max}}</dd>
+        <dt class="col-sm-5">Mean:</dt>
+        <dd class="col-sm-5">{{stocksAccValues.mean}}</dd>
+        <dt class="col-sm-5">Std. Deviation:</dt>
+        <dd class="col-sm-5">{{stocksAccValues.std}}</dd>
+      </dl>
+    </div>
+    <div class="histogram" *ngIf="stocksAccData[0].data.length > 0">
+      <canvas baseChart
+              [datasets]="stocksAccData"
+              [labels]="stocksAccLabels"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              [options]="barChartOptions"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="store-characteristic">
+    <h2>On Floor Availability  (in percent)</h2>
+    <div class="data">
+      <dl class="row">
+        <dt class="col-sm-5">Minimum:</dt>
+        <dd class="col-sm-5">{{onFloorValues.min}}</dd>
+        <dt class="col-sm-5">Maximum:</dt>
+        <dd class="col-sm-5">{{onFloorValues.max}}</dd>
+        <dt class="col-sm-5">Mean:</dt>
+        <dd class="col-sm-5">{{onFloorValues.mean}}</dd>
+        <dt class="col-sm-5">Std. Deviation:</dt>
+        <dd class="col-sm-5">{{onFloorValues.std}}</dd>
+      </dl>
+    </div>
+    <div class="histogram" *ngIf="onFloorData[0].data.length > 0">
+      <canvas baseChart
+              [datasets]="onFloorData"
+              [labels]="onFloorLabels"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              [options]="barChartOptions"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="store-characteristic">
+    <h2>Stock Mean Age (in days)</h2>
+    <div class="data">
+      <dl class="row">
+        <dt class="col-sm-5">Minimum:</dt>
+        <dd class="col-sm-5">{{stockMeanValues.min}}</dd>
+        <dt class="col-sm-5">Maximum:</dt>
+        <dd class="col-sm-5">{{stockMeanValues.max}}</dd>
+        <dt class="col-sm-5">Mean:</dt>
+        <dd class="col-sm-5">{{stockMeanValues.mean}}</dd>
+        <dt class="col-sm-5">Std. Deviation:</dt>
+        <dd class="col-sm-5">{{stockMeanValues.std}}</dd>
+      </dl>
+    </div>
+    <div class="histogram" *ngIf="meanAgesData[0].data.length > 0">
+      <canvas baseChart
+              [datasets]="meanAgesData"
+              [labels]="meanAgesLabels"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              [options]="barChartOptions"
+      ></canvas>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadAnimation>
+  <div class="loader-wrapper" *ngIf="!loadingError; else error">
+    <div class="loader"></div>
+  </div>
+</ng-template>
+
+<ng-template #error>
+  <div class="error">
+    <em>Sorry, the store you want to view is not available</em>
+  </div>
+</ng-template>

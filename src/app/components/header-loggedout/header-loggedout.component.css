@@ -1,0 +1,22 @@
+nav {
+  background-color: #003657;
+}
+
+div.dropdown a {
+  float:left;
+  padding-left: 15px;
+  padding-top: 11px;
+}
+
+div.dropdown ul.dropdown-menu {
+  margin-top: 59px;
+  border-radius: 0 !important;
+}
+
+div.navicon {
+  width: 35px;
+  height: 4px;
+  background-color: #fff;
+  margin: 6px 0;
+}
+

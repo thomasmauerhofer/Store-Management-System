@@ -1,0 +1,103 @@
+<app-header-loggedin></app-header-loggedin>
+<h1 class="center">Stores</h1>
+<div class="content" *ngIf="stores; else loadAnimation">
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>
+          <label>
+            Name
+            <input class="form-control" id="name-input" [(ngModel)]="nameInput" (keyup)="filterName()">
+          </label>
+        </th>
+        <th>
+          <label>
+            CC
+            <input class="form-control" id="cc-input" [(ngModel)]="ccInput" (keyup)="filterName()">
+          </label>
+        </th>
+        <th>
+          <label>
+            E-Mail
+            <input class="form-control" id="email-input" [(ngModel)]="emailInput" (keyup)="filterName()">
+          </label>
+        </th>
+        <th>
+          <label>
+            Category
+            <input class="form-control" id="cat-input" [(ngModel)]="catInput" (keyup)="filterName()">
+          </label>
+        </th>
+        <th>Total Stock</th>
+        <th>Stock Accuracy</th>
+        <th>On Floor Availability</th>
+        <th>Stock Mean Age</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let store of pagedItems">
+        <td>{{store.name}}</td>
+        <td>{{store.countryCode}}</td>
+        <td><a href="mailto:{{store.email}}">{{store.email}}</a></td>
+        <td>{{store.category}}</td>
+        <td>{{store.stockBackstore || store.stockFrontstore || store.stockShoppingWindow?
+          +store.stockBackstore ++ +store.stockFrontstore ++ +store.stockShoppingWindow : "N/A" }}
+        </td>
+        <td>{{store.stockAccuracy? store.stockAccuracy : "N/A"}}</td>
+        <td>{{store.onFloorAvailability? store.onFloorAvailability : "N/A"}}</td>
+        <td>{{store.stockMeanAge? store.stockMeanAge : "N/A"}}</td>
+        <td>
+          <div class="actions">
+            <button type="button" class="btn btn-default btn-sm" routerLink="/detail/{{store.id}}">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </button>
+            <div class="admin-buttons" *ngIf="user.role === admin">
+              <button type="button" class="btn btn-default btn-sm" routerLink="/edit/{{store.id}}">
+                <span class="glyphicon glyphicon-edit"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-sm" (click)="deleteStore(store)">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(1)">First</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(pager.currentPage - 1)">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span></a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.currentPage + 1)">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span></a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.totalPages)">Last</a>
+    </li>
+  </ul>
+</div>
+
+<ng-template #loadAnimation>
+  <div class="loader-wrapper" *ngIf="!loadingError; else error">
+    <div class="loader"></div>
+  </div>
+</ng-template>
+
+<ng-template #error>
+  <div class="error">
+    <em>Sorry, the store list is currently not available</em>
+  </div>
+</ng-template>

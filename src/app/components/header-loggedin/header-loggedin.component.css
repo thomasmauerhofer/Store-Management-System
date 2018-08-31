@@ -1,0 +1,66 @@
+nav {
+  background-color: #003657;
+}
+
+#search {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 58px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 58px;
+  height: 58px;
+}
+
+#search:hover {
+  color: #337ab7;
+}
+
+#search-bar-form {
+  position: absolute;
+  top: 1px;
+  right: 300px;
+  width: 58px;
+  height: 58px;
+  line-height: 56px;
+  color: #003657;
+
+  -webkit-transition: width 2s ease;
+  -moz-transition: width 2s ease;
+  -o-transition: width 2s ease;
+  transition: width 2s ease;
+}
+
+#search-bar-form input {
+  background-color: #fff;
+  border: none;
+  float: left;
+  width: 300px;
+  text-indent: 10px;
+}
+
+.collapsing {
+  -webkit-transition: none;
+  transition: none;
+  display: none;
+}
+
+div.dropdown a {
+  float:left;
+  padding-left: 15px;
+  padding-top: 11px;
+}
+
+div.dropdown ul.dropdown-menu {
+  margin-top: 59px;
+  border-radius: 0 !important;
+}
+
+div.navicon {
+  width: 35px;
+  height: 4px;
+  background-color: #fff;
+  margin: 6px 0;
+}
