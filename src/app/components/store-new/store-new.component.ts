@@ -11,7 +11,8 @@ import {StoreService} from '../../services/store.service';
   styleUrls: ['./store-new.component.css']
 })
 export class StoreNewComponent implements OnInit {
-  model: any = {};
+  model: any = { stockMeanAge: '', onFloorAvailability: '', stockAccuracy: '', stockBackstore: '', stockFrontstore: '',
+                  stockShoppingWindow: ''};
 
   constructor(private storeService: StoreService,
               private notifierService: NotifierService) {

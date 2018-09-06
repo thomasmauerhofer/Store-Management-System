@@ -13,6 +13,8 @@ export function std(values: number[]) {
 }
 
 export function calculateAggregationValues(values: number[], numBins: number) {
+  values = values.filter(v => v !== 0.0);
+
   const hist = {data: new Array<number>(numBins).fill(0), labels: []};
   const min = Math.min(...values);
   const max = Math.max(...values);
